@@ -1,5 +1,5 @@
 //task: group anagram (https://leetcode.com/problems/group-anagrams/description/)
-//Once a freelancer successfully completes the task, they would potentially be provided an assignment by the client before they are officially hired
+//Once a freelancer successfully completes the task, they would potentially be provided with an assignment by the client before they are officially hired
 //Sample assignment:
 //<h1>Software engineer needed to create a dynamic word puzzle</h1>
 //<li>timed word search puzzle</li>
