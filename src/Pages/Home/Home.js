@@ -1,0 +1,60 @@
+import styles from "./Home.module.css"
+import task from "../../Assets/task.png"
+import selection from "../../Assets/selection.png"
+import confidential from "../../Assets/confidential.png"
+import explainer from "../../Assets/explainer.mp4"
+
+import Card from "react-bootstrap/Card"
+import ReactPlayer from "react-player";
+
+
+const logo = new URL("../../Assets/logo.png", import.meta.url)
+
+const cardInfo = [
+  { image: task, text: "Tasks are assigned by clients to screen candidates for applicable skills" },
+  { image: selection, text: "Fair selection process ensues where only sheer skills and talent are evaluated" },
+  { image: confidential, text: "Identities of clients and freelancers are kept confidential until selection is finalized" }
+]
+
+const render = (card, index) => {
+  return (
+    <Card style={{ width: "16rem" }} key={index} className={styles.box}>
+      <Card.Img src={card.image} className={styles.image} />
+      <Card.Body>
+        <Card.Text className={styles.text}>
+          {card.text}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  )
+}
+
+function Home() {
+    return (
+        <div className={styles.background}>
+          <header className={styles.logo}>
+            <img src={logo} alt="Logo" />
+          </header>
+          <div className={styles.container}>
+            <h1 className={styles.title}>Hub For Freelance <br/> Opportunities In <br/> Technology</h1>
+          </div>
+              <div className={styles.grid}>
+                {cardInfo.map(render)}
+              </div>
+            <div>
+              <h1 className={styles.title}>How It Works</h1>
+            <ReactPlayer 
+              controls={true}
+              url={explainer} 
+              height="500px"
+               width="700px"
+               className={styles.video} 
+              />
+            </div>
+          </div>
+    );
+}
+
+
+
+export default Home;
