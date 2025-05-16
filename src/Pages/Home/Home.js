@@ -6,6 +6,7 @@ import explainer from "../../Assets/explainer.mp4"
 
 import Card from "react-bootstrap/Card"
 import ReactPlayer from "react-player";
+import { useNavigate } from "react-router"
 
 
 const logo = new URL("../../Assets/logo.png", import.meta.url)
@@ -30,6 +31,10 @@ const render = (card, index) => {
 }
 
 function Home() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/dashboard");    
+  };
     return (
         <div className={styles.background}>
           <header className={styles.logo}>
@@ -37,19 +42,13 @@ function Home() {
           </header>
           <div className={styles.container}>
             <h1 className={styles.title}>Hub For Freelance <br/> Opportunities In <br/> Technology</h1>
+            <button className={styles.button} onClick={handleClick}>Dashboard</button>
           </div>
               <div className={styles.grid}>
                 {cardInfo.map(render)}
               </div>
             <div>
               <h1 className={styles.title}>How It Works</h1>
-            <ReactPlayer 
-              controls={true}
-              url={explainer} 
-              height="500px"
-               width="700px"
-               className={styles.video} 
-              />
             </div>
           </div>
     );
