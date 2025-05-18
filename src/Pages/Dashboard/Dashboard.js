@@ -16,23 +16,28 @@ function Dashboard () {
         {title: "", date: "", submitBy: ""},
     ]);
 
-    const handleAddRow = (newRow) => {
-        setRows((prevRows) => [...prevRows, newRow]);
-    }
+    const [rowToEdit, setRowToEdit] = useState(null);
+
     const handleDeleteRow = (index) => {
-        setRows((prevRows) => prevRows.filter((_, i) => i !== index));
-    }
-    const handleEditRow = (index, updatedRow) => {
-        setRows((prevRows) => prevRows.map((row, i) => (i === index ? updatedRow : row)));
-    }
-    const handleRowClick = (index) => {
-        const selectedRow = rows[index];
-        // Handle row click event, e.g., show details or edit
-        console.log("Row clicked:", selectedRow);
-    }
+        setRows(rows.filter((_, i) => i !== index));
+    };
+
+    const handleEditRow = (index) => {
+       setRowToEdit(index);
+
+        setModalOpen(true);
+    };
+
     const handleSubmit = (newRow) => {
-        setRows((prevRows) => [...prevRows, newRow]);
-        setModalOpen(false);
+       rowToEdit === null
+       ? setRows([...rows, newRow])
+       : setRows(
+            rows.map((currRow, index) => {
+                if (index !== rowToEdit) return currRow;
+            
+                return newRow;
+            })
+       );
     };
 
     return ( 
@@ -40,14 +45,20 @@ function Dashboard () {
             <button className={styles.button} onClick={handleClick}>Home</button>
             <h1 className={styles.task}>Tasks</h1>
             <button className={styles.button} onClick={() => setModalOpen(true)}>Create Task</button>
-            {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
-            <div className={styles.tablewrapper}>
-                <table className={styles.table} rows={rows} 
-                onRowClick={handleRowClick} 
-                onAddRow={handleAddRow} 
-                onDeleteRow={handleDeleteRow} 
-                onEditRow={handleEditRow}
+            {modalOpen && (
+                <Modal closeModal={() =>{
+                    setModalOpen(false);
+                    setRowToEdit(null);
+                }}
                 onSubmit={handleSubmit} 
+                defaultValues={rowToEdit !== null ? rows[rowToEdit] : null}
+                
+                 />
+                 )}
+            <div className={styles.tablewrapper}>
+                <table className={styles.table} rows={rows}  
+                deleteRow={handleDeleteRow} 
+                editRow={handleEditRow} 
                 >
                     <thead>
                         <th className={styles.title}>Title</th >
