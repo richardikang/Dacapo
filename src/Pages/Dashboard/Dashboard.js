@@ -42,7 +42,13 @@ function Dashboard () {
             <button className={styles.button} onClick={() => setModalOpen(true)}>Create Task</button>
             {modalOpen && <Modal closeModal={() => setModalOpen(false)} />}
             <div className={styles.tablewrapper}>
-                <table className={styles.table} rows={rows} onRowClick={handleRowClick} onAddRow={handleAddRow} onDeleteRow={handleDeleteRow} onEditRow={handleEditRow}>
+                <table className={styles.table} rows={rows} 
+                onRowClick={handleRowClick} 
+                onAddRow={handleAddRow} 
+                onDeleteRow={handleDeleteRow} 
+                onEditRow={handleEditRow}
+                onSubmit={handleSubmit} 
+                >
                     <thead>
                         <th className={styles.title}>Title</th >
                         <th>Date Posted</th >
