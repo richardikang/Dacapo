@@ -41,7 +41,7 @@ export const Modal = ( {closeModal, onSubmit} ) => {
             <form>
                 <div className={styles.form}>
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" name="title" value={formState.title} required />
+                    <input type="text" id="title" name="title" value={formState.title} onChange={handleChange} required />
                 </div>
                 <div className={styles.form}>
                     <label htmlFor="task">Task</label>
