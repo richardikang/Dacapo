@@ -66,6 +66,19 @@ function Dashboard () {
                         <th>Submit By</th >
                     </thead>
                     <tbody>
+                        {
+                        rows.map((row, index) => {
+                            return <tr key={index}>
+                                <td className={styles.title}>{row.title}</td>
+                                <td>{row.date}</td>
+                                <td>{row.submitBy}</td>
+                                <td>
+                                    <button className={styles.button} onClick={() => handleEditRow(index)}>Edit</button>
+                                    <button className={styles.button} onClick={() => handleDeleteRow(index)}>Delete</button>
+                                </td>
+                            </tr>
+                        })
+                        }
                         <tr></tr>
                     </tbody>
                 </table>

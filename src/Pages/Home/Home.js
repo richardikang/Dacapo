@@ -2,14 +2,12 @@ import styles from "./Home.module.css"
 import task from "../../Assets/task.png"
 import selection from "../../Assets/selection.png"
 import confidential from "../../Assets/confidential.png"
-import explainer from "../../Assets/explainer.mp4"
+
 
 import Card from "react-bootstrap/Card"
-import ReactPlayer from "react-player";
 import { useNavigate } from "react-router"
 
 
-const logo = new URL("../../Assets/logo.png", import.meta.url)
 
 const cardInfo = [
   { image: task, text: "Tasks are assigned by clients to screen candidates for applicable skills" },
@@ -37,9 +35,6 @@ function Home() {
   };
     return (
         <div className={styles.background}>
-          <header className={styles.logo}>
-            <img src={logo} alt="Logo" />
-          </header>
           <div className={styles.container}>
             <h1 className={styles.title}>Hub For Freelance <br/> Opportunities In <br/> Technology</h1>
             <button className={styles.button} onClick={handleClick}>Dashboard</button>
