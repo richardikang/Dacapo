@@ -1,0 +1,66 @@
+.tablewrapper {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.table {
+    display: block;
+    justify-content: center;
+    overflow: hidden;
+    table-layout: fixed;
+    border-collapse: collapse;
+    white-space: nowrap;
+    width: 100rem;
+    max-width: 120%;
+    margin: 10px auto;
+    overflow-x: auto;
+}
+
+.table thead {
+   background-color: #00dee5;
+   color: black;
+}
+
+.table th,
+.table td {
+    padding: 0.8rem
+}
+
+.table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    color: rgb(177, 107, 227);
+}
+
+.creatTask {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    width: 40%;
+}
+
+.date {
+    width: 25%;     
+}
+.submit {
+    width: 25%;
+}
