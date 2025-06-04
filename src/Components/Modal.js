@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css'
 
 
 import styles from "./Modal.module.css"
@@ -14,7 +16,7 @@ export const Modal = ( {closeModal, onSubmit} ) => {
     });
 
     const validateForm = () => {
-        if(formState.title && formState.task && formState.date && formState.level) {
+        if(formState.title && formState.task && formState.date && formState.submitBy && formState.level) {
             return true;
         } else {
             return false;
@@ -54,7 +56,29 @@ export const Modal = ( {closeModal, onSubmit} ) => {
                 </div>
                 <div className={styles.form}>
                     <label htmlFor="task">Task</label>
-                    <textarea id="task" name="task" value={formState.task} onChange={handleChange} required></textarea>
+                    <ReactQuill 
+                        className={styles.quill}
+                        id="task" 
+                        name="task" 
+                        value={formState.task} 
+                        onChange={(value) => setFormState({ ...formState, task: value })}
+                        required
+                        theme="snow"
+                        placeholder="Write your task here..."
+                        modules={{
+                            toolbar: [
+                                [{ 'header': [1, 2, false] }],
+                                ['bold', 'italic', 'underline'],
+                                ['link', 'image'],
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                ['clean']
+                            ]
+                        }}
+                        formats={[
+                            'header', 'bold', 'italic', 'underline', 'link', 'image', 'list'
+                        ]}
+                    />
+                <br />
                 </div>
                      <div className={styles.form}>
                     <label htmlFor="date">Today's Date</label>

@@ -13,5 +13,24 @@
 
 .box1, .box2 {
     border-radius: 10px 10px 10px 10px;
-    overflow: hidden;
+    overflow: scroll;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.description {
+    margin: 10px;
+}
+
+.submitheading {
+    line-height: .4;
+}
+
+.submit {
+    font-weight: 500;
 }

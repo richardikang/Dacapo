@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import ReactHTMLParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 import { CodeEditor } from "../../Components/Codeeditor"
 import styles from "./Application.module.css";
@@ -10,12 +11,19 @@ function Application() {
   return (
     <div className={styles.grid}>
       <div className={styles.box1}>
-        <div>      
+        <div className={styles.heading}>
           {title}
-          {submitBy}
         </div>
-        <div>
-          {description}
+        <p className={styles.submit}>Submit by:</p>
+        {submitBy}
+        <div className={styles.description}>
+          {ReactHTMLParser(description, {
+            transform: (node) => {
+              if (node.type === 'tag' && node.name === 'p') {
+                return convertNodeToElement(node, processNodes, htmlparser2);
+              }
+            }
+          })}
         </div>
       </div>
       <div className={styles.box2}>
