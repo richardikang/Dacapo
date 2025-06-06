@@ -11,7 +11,7 @@ function Task () {
     const [modalOpen, setModalOpen] = useState(false);
 
     const[rows, setRows] = useState([
-        {title: "", date: "", submitBy: "", task: ""},
+        {title: "", date: "", submitBy: "", task: "", technology: ""},
     ]);
 
     const [rowToEdit, setRowToEdit] = useState(null);
@@ -62,20 +62,17 @@ function Task () {
                 deleteRow={handleDeleteRow} 
                 editRow={handleEditRow} 
                 >
-                    <thead>
-                        <th className={styles.title}>Title</th >
-                        <th className={styles.date}>Date Posted</th >
-                        <th className={styles.submit}>Submit By</th >
-                    </thead>
-                    <tbody>
+                     <tbody>
                         {
                         rows.map((row, index) => {
                             return <tr key={index}>
-                                        <td className={styles.title} onClick={() => navigate("/application", {state: {index, title: row.title, description: row.task, date: row.date, submitBy: row.submitBy}})}>
+                                        <td className={styles.title} onClick={() => navigate("/application", 
+                                            {state: {index, title: row.title, description: row.task, date: row.date, submitBy: row.submitBy, technology: row.technology}})}>
                                              {row.title}
                                         </td>
-                                        <td>{row.date}</td>
-                                        <td>{row.submitBy}</td>
+                                        <td>{row.technology}</td>
+                                        <td>Date: {row.date}</td>
+                                        <td>Submit by: {row.submitBy}</td>
                                         <td>
                                             <button className={styles.button} onClick={() => handleEditRow(index)}>Edit</button>
                                             <button className={styles.button} onClick={() => handleDeleteRow(index)}>Delete</button>

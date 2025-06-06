@@ -12,11 +12,13 @@ export const Modal = ( {closeModal, onSubmit} ) => {
         task: "",
         date: "",
         submitBy: "",
-        level: ""
+        level: "",
+        technology: ""
     });
 
     const validateForm = () => {
-        if(formState.title && formState.task && formState.date && formState.submitBy && formState.level) {
+        if(formState.title && formState.task && formState.date && formState.submitBy && formState.level && formState.technology 
+          && formState.date <= formState.submitBy) {
             return true;
         } else {
             return false;
@@ -38,6 +40,7 @@ export const Modal = ( {closeModal, onSubmit} ) => {
 
         closeModal();
     }
+
   return (
     <div 
         className={styles.modalwrapper}
@@ -78,7 +81,27 @@ export const Modal = ( {closeModal, onSubmit} ) => {
                             'header', 'bold', 'italic', 'underline', 'link', 'image', 'list'
                         ]}
                     />
-                <br />
+                <div>
+                    <label htmlFor="technology">Technology</label>
+                    <select id="technology" name="technology" value={formState.technology} onChange={handleChange} required>
+                        <option value="" disabled>Select Stack</option>     
+                        <option value="react">React</option>
+                        <option value="angular">Angular</option>
+                        <option value="vue">Vue</option>
+                        <option value="nodejs">Node.js</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="csharp">C#</option>
+                        <option value="php">PHP</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="go">Go</option>
+                        <option value="swift">Swift</option>
+                        <option value="kotlin">Kotlin</option>
+                        <option value="dart">Dart</option>
+                        <option value="flutter">Flutter</option>
+                        <option value="other">Other</option>
+                    </select>              
+                </div>
                 </div>
                      <div className={styles.form}>
                     <label htmlFor="date">Today's Date</label>

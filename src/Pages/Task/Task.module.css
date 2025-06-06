@@ -2,36 +2,27 @@
     width: 100%;
     justify-content: space-between;
     display: flex;
-    align-items: center;
-    margin-left: 370px;
 }
 
 .table {
-    display: block;
-    justify-content: center;
+    display: flex;
+    justify-content:center;
     overflow: hidden;
     table-layout: fixed;
     border-collapse: collapse;
     white-space: nowrap;
-    width: 100rem;
+    width: 80rem;
     max-width: 120%;
     margin: 10px auto;
     overflow-x: auto;
-}
-
-.table thead {
-   background-color: #00dee5;
-   color: black;
-}
-
-.table th,
-.table td {
-    padding: 0.8rem
+    border: 1px solid #ddd;
 }
 
 .table td {
+    padding: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    justify-content: space-evenly;
 }
 
 .table tbody tr:hover {
@@ -41,7 +32,7 @@
 .header {
     display: flex;
     justify-content: center;
-    color: rgb(177, 107, 227);
+    color: rgb(0, 0, 0);
 }
 
 .creatTask {
@@ -60,8 +51,8 @@
 }
 
 .date {
-    width: 25%;     
+    width: 30%;     
 }
 .submit {
-    width: 25%;
+    width: 30%;
 }

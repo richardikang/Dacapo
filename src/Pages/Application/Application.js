@@ -14,8 +14,7 @@ function Application() {
         <div className={styles.heading}>
           {title}
         </div>
-        <p className={styles.submit}>Submit by:</p>
-        {submitBy}
+        <p className={styles.submit}>Submit by: {submitBy}</p>
         <div className={styles.description}>
           {ReactHTMLParser(description, {
             transform: (node) => {
